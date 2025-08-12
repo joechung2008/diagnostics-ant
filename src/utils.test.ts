@@ -17,7 +17,7 @@ describe("utils", () => {
     });
 
     it("returns false for objects without extensionName", () => {
-      expect(isExtensionInfo({} as Partial<ExtensionInfo>)).toBe(false);
+      expect(isExtensionInfo({} as unknown as ExtensionInfo)).toBe(false);
     });
   });
 
