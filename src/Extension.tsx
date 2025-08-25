@@ -8,7 +8,7 @@ const Extension: React.FC<ExtensionProps> = ({
   stageDefinition,
 }) => {
   return (
-    <div className="fit">
+    <div className="extension-root grow">
       <Typography.Title level={1}>{extensionName}</Typography.Title>
       {config && <Configuration config={config} />}
       {stageDefinition && <StageDefinition stageDefinition={stageDefinition} />}

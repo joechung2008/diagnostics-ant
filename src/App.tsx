@@ -107,7 +107,7 @@ const App: React.FC = () => {
   };
 
   return (
-    <>
+    <div className="flexbox">
       <Menu mode="horizontal">
         <Menu.SubMenu key="env-dropdown" title={environmentName}>
           {menuItems.map((item) => (
@@ -141,36 +141,30 @@ const App: React.FC = () => {
           websites
         </Menu.Item>
       </Menu>
-      <Tabs
-        activeKey={selectedTab}
-        onChange={(key) => setSelectedTab(key)}
-        style={{ marginBottom: 16 }}
-      >
-        <Tabs.TabPane tab="Extensions" key="extensions">
-          <Flex style={{ flexDirection: "row", gap: "1rem" }}>
-            <div>
-              <Extensions
-                extensions={extensions}
-                onLinkClick={handleLinkClick}
-              />
-            </div>
-            <div style={{ flexGrow: 1 }}>
-              {extension && <Extension {...extension} />}
-            </div>
-          </Flex>
-        </Tabs.TabPane>
-        <Tabs.TabPane tab="Build Information" key="build">
-          <div style={{ padding: 10 }}>
-            <BuildInfo {...buildInfo} />
-          </div>
-        </Tabs.TabPane>
-        <Tabs.TabPane tab="Server Information" key="server">
-          <div style={{ padding: 10 }}>
-            <ServerInfo {...serverInfo} />
-          </div>
-        </Tabs.TabPane>
+      <Tabs activeKey={selectedTab} onChange={(key) => setSelectedTab(key)}>
+        <Tabs.TabPane tab="Extensions" key="extensions" />
+        <Tabs.TabPane tab="Build Information" key="build" />
+        <Tabs.TabPane tab="Server Information" key="server" />
       </Tabs>
-    </>
+      {selectedTab === "extensions" && (
+        <div className="tab-panel">
+          <Flex className="stack">
+            <Extensions extensions={extensions} onLinkClick={handleLinkClick} />
+            {extension && <Extension {...extension} />}
+          </Flex>
+        </div>
+      )}
+      {selectedTab === "build" && (
+        <div className="tab-panel">
+          <BuildInfo {...buildInfo} />
+        </div>
+      )}
+      {selectedTab === "server" && (
+        <div className="tab-panel">
+          <ServerInfo {...serverInfo} />
+        </div>
+      )}
+    </div>
   );
 };
 

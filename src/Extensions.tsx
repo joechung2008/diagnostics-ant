@@ -20,7 +20,7 @@ const Extensions: React.FC<ExtensionsProps> = ({ extensions, onLinkClick }) => {
   };
 
   return (
-    <div className="fit">
+    <div className="extension-root">
       <Menu
         aria-label="Extensions"
         items={items}
