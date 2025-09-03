@@ -1,3 +1,5 @@
+import prettierConfig from "eslint-config-prettier";
+import prettierPlugin from "eslint-plugin-prettier";
 import reactHooks from "eslint-plugin-react-hooks";
 import reactRefresh from "eslint-plugin-react-refresh";
 import { globalIgnores } from "eslint/config";
@@ -10,6 +12,7 @@ export default [
   ...tseslint.configs.recommended,
   reactHooks.configs["recommended-latest"],
   reactRefresh.configs.vite,
+  prettierConfig,
   {
     files: ["**/*.{ts,tsx}"],
     languageOptions: {
@@ -18,6 +21,12 @@ export default [
       parserOptions: {
         tsconfigRootDir: fileURLToPath(import.meta.url),
       },
+    },
+    plugins: {
+      prettier: prettierPlugin,
+    },
+    rules: {
+      "prettier/prettier": "error",
     },
   },
 ];
