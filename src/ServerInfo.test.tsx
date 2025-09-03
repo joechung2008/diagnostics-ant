@@ -12,7 +12,7 @@ describe("ServerInfo", () => {
         nodeVersions="v18.0.0"
         serverId="server-1"
         uptime={12345}
-      />,
+      />
     );
     expect(screen.getByLabelText("Server Info")).toBeInTheDocument();
   });

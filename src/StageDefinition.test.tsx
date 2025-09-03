@@ -5,7 +5,7 @@ import StageDefinition from "./StageDefinition";
 describe("StageDefinition", () => {
   it("renders the stage definitions title", () => {
     render(
-      <StageDefinition stageDefinition={{ stage1: ["step1", "step2"] }} />,
+      <StageDefinition stageDefinition={{ stage1: ["step1", "step2"] }} />
     );
     expect(screen.getByText("Stage Definitions")).toBeInTheDocument();
   });

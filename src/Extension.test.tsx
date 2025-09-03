@@ -6,7 +6,7 @@ describe("Extension", () => {
   it("renders the extension name", () => {
     render(<Extension extensionName="Test Extension" />);
     expect(
-      screen.getByRole("heading", { name: "Test Extension" }),
+      screen.getByRole("heading", { name: "Test Extension" })
     ).toBeInTheDocument();
   });
 });

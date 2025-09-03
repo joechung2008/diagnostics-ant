@@ -6,7 +6,7 @@ import ThemedApp from "./ThemedApp.tsx";
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
     <ThemedApp />
-  </StrictMode>,
+  </StrictMode>
 );
 
 // If you want to start measuring performance in your app, pass a function

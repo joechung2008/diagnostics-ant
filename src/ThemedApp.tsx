@@ -4,7 +4,7 @@ import App from "./App";
 
 function ThemedApp() {
   const [isDark, setIsDark] = useState(
-    () => window.matchMedia("(prefers-color-scheme: dark)").matches,
+    () => window.matchMedia("(prefers-color-scheme: dark)").matches
   );
 
   useEffect(() => {
@@ -23,7 +23,7 @@ function ThemedApp() {
 
   const algorithm = useMemo(
     () => (isDark ? theme.darkAlgorithm : theme.defaultAlgorithm),
-    [isDark],
+    [isDark]
   );
 
   useEffect(() => {

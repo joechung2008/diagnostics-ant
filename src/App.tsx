@@ -18,7 +18,7 @@ const App: React.FC = () => {
   const [diagnostics, setDiagnostics] = useState<Diagnostics>();
   const [extension, setExtension] = useState<ExtensionInfo>();
   const [environment, setEnvironment] = useState<string>(
-    EnvironmentValues.Public,
+    EnvironmentValues.Public
   );
   const [selectedTab, setSelectedTab] = useState("extensions");
 
@@ -37,7 +37,7 @@ const App: React.FC = () => {
 
   const showPaasServerless = useMemo(
     () => isExtensionInfo(diagnostics?.extensions["paasserverless"]),
-    [diagnostics?.extensions],
+    [diagnostics?.extensions]
   );
 
   const environments = useMemo(
@@ -70,7 +70,7 @@ const App: React.FC = () => {
         },
       },
     ],
-    [environment],
+    [environment]
   );
 
   const menuItems = useMemo(
@@ -80,7 +80,7 @@ const App: React.FC = () => {
         label: env.text,
         onClick: env.onClick,
       })),
-    [environments],
+    [environments]
   );
 
   useEffect(() => {

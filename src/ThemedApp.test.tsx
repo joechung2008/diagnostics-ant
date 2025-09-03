@@ -54,7 +54,7 @@ describe("ThemedApp", () => {
     render(<ThemedApp />);
     expect(addEventListener).toHaveBeenCalledWith(
       "change",
-      expect.any(Function),
+      expect.any(Function)
     );
   });
 });
