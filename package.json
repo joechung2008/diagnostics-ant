@@ -1,22 +1,5 @@
 {
-  "name": "diagnostics-ant",
-  "private": true,
-  "version": "0.0.0",
-  "type": "module",
-  "scripts": {
-    "build": "npm-run-all build:*",
-    "build:tsc": "tsc -b",
-    "build:vite": "vite build",
-    "dev": "vite",
-    "format": "prettier --write .",
-    "lint": "npm-run-all lint:*",
-    "lint:eslint": "eslint .",
-    "lint:prettier": "prettier --check .",
-    "preview": "vite preview",
-    "test": "vitest run",
-    "test:coverage": "vitest run --coverage",
-    "test:watch": "vitest"
-  },
+  "author": "Joe Chung",
   "dependencies": {
     "antd": "^5.27.1",
     "react": "^19.1.1",
@@ -43,5 +26,23 @@
     "typescript-eslint": "^8.41.0",
     "vite": "^7.1.4",
     "vitest": "^3.2.4"
-  }
+  },
+  "name": "diagnostics-ant",
+  "private": true,
+  "scripts": {
+    "build": "npm-run-all build:*",
+    "build:tsc": "tsc -b",
+    "build:vite": "vite build",
+    "dev": "vite",
+    "format": "prettier --write .",
+    "lint": "npm-run-all lint:*",
+    "lint:eslint": "eslint .",
+    "lint:prettier": "prettier --check .",
+    "preview": "vite preview",
+    "test": "vitest run",
+    "test:coverage": "vitest run --coverage",
+    "test:watch": "vitest"
+  },
+  "type": "module",
+  "version": "0.0.0"
 }
