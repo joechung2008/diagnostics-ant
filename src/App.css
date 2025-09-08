@@ -37,6 +37,11 @@ body {
   height: 100%;
 }
 
+.tab-list {
+  box-sizing: border-box;
+  padding: 0 0.5rem;
+}
+
 .tab-panel {
   box-sizing: border-box;
   flex: 1;

@@ -74,13 +74,43 @@ const App: React.FC = () => {
   );
 
   const menuItems = useMemo(
-    () =>
-      environments.map((env) => ({
-        key: env.key,
-        label: env.text,
-        onClick: env.onClick,
-      })),
-    [environments]
+    () => [
+      {
+        key: "env-dropdown",
+        label: environmentName,
+        children: environments.map((env) => ({
+          key: env.key,
+          label: env.text,
+          onClick: env.onClick,
+        })),
+      },
+      ...(showPaasServerless
+        ? [
+            {
+              key: "paasserverless",
+              label: "paasserverless",
+              onClick: () => {
+                const paasserverless =
+                  diagnostics?.extensions["paasserverless"];
+                if (isExtensionInfo(paasserverless)) {
+                  setExtension(paasserverless);
+                }
+              },
+            },
+          ]
+        : []),
+      {
+        key: "websites",
+        label: "websites",
+        onClick: () => {
+          const websites = diagnostics?.extensions["websites"];
+          if (isExtensionInfo(websites)) {
+            setExtension(websites);
+          }
+        },
+      },
+    ],
+    [environments, environmentName, showPaasServerless, diagnostics?.extensions]
   );
 
   useEffect(() => {
@@ -108,44 +138,17 @@ const App: React.FC = () => {
 
   return (
     <div className="flexbox">
-      <Menu mode="horizontal">
-        <Menu.SubMenu key="env-dropdown" title={environmentName}>
-          {menuItems.map((item) => (
-            <Menu.Item key={item.key} onClick={item.onClick}>
-              {item.label}
-            </Menu.Item>
-          ))}
-        </Menu.SubMenu>
-        {showPaasServerless && (
-          <Menu.Item
-            key="paasserverless"
-            onClick={() => {
-              const paasserverless = diagnostics.extensions["paasserverless"];
-              if (isExtensionInfo(paasserverless)) {
-                setExtension(paasserverless);
-              }
-            }}
-          >
-            paasserverless
-          </Menu.Item>
-        )}
-        <Menu.Item
-          key="websites"
-          onClick={() => {
-            const websites = diagnostics.extensions["websites"];
-            if (isExtensionInfo(websites)) {
-              setExtension(websites);
-            }
-          }}
-        >
-          websites
-        </Menu.Item>
-      </Menu>
-      <Tabs activeKey={selectedTab} onChange={(key) => setSelectedTab(key)}>
-        <Tabs.TabPane tab="Extensions" key="extensions" />
-        <Tabs.TabPane tab="Build Information" key="build" />
-        <Tabs.TabPane tab="Server Information" key="server" />
-      </Tabs>
+      <Menu mode="horizontal" items={menuItems} />
+      <Tabs
+        activeKey={selectedTab}
+        className="tab-list"
+        items={[
+          { key: "extensions", label: "Extensions" },
+          { key: "build", label: "Build Information" },
+          { key: "server", label: "Server Information" },
+        ]}
+        onChange={(key) => setSelectedTab(key)}
+      />
       {selectedTab === "extensions" && (
         <div className="tab-panel">
           <Flex className="stack">
