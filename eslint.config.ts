@@ -5,7 +5,6 @@ import reactHooks from "eslint-plugin-react-hooks";
 import reactRefresh from "eslint-plugin-react-refresh";
 import reactPlugin from "eslint-plugin-react-x";
 import { globalIgnores } from "eslint/config";
-import globals from "globals";
 import { fileURLToPath } from "node:url";
 import tseslint from "typescript-eslint";
 
@@ -21,7 +20,6 @@ export default [
     files: ["**/*.{ts,tsx}"],
     languageOptions: {
       ecmaVersion: 2020,
-      globals: globals.browser,
       parserOptions: {
         tsconfigRootDir: fileURLToPath(import.meta.url),
       },
